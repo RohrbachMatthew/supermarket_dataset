@@ -1,0 +1,47 @@
+Name: super_market_db
+host: localhost
+user: root
+port: 3307
+
+It includes 1,000 rows and 17 columns with fields like:
+- Invoice ID, Branch, City, Customer Type, Gender
+- Product Line, Unit Price, Quantity, Tax, Total
+- Date, Time, Payment Method, COGS, Gross Income, Rating
+🧱 Suggested Table Breakdown for Multi-Table Practice
+You can normalize it into separate tables like:
+- Customers: customer type, gender
+- Products: product line, unit price
+- Sales: invoice ID, quantity, tax, total, date/time, payment
+- Stores: branch, city
+This lets you practice joins, foreign keys, and efficient querying
+
+
+tables:
+customers
+   - invoice_id VARCHAR(10) (foreign)
+   - gender VARCHAR(10)
+   - customer_type VARCHAR(20)
+
+stores
+   - invoice_id VARCHAR(10) (foreign)
+   - branch VARCHAR(10) 
+   - city VARCHAR(20)
+
+products
+   - invoice_id VARCHAR(10) (foreign)
+   - product_line VARCHAR(30)
+   - unit_price DECIMAL(6,2)
+
+
+sales
+   - invoice_id VARCHAR (primary)
+   - date DATE
+   - time TIME
+   - quantity INT
+   - tax DECIMAL(6,2)
+   - total DECIMAL (8,2)
+   - cogs Decimal (8,2)
+   - payment VARCHAR(20)
+   - gross_margin_percentage FLOAT
+   - gross income DECIMAL(8,2)
+   - rating DECIMAL (3,1)
