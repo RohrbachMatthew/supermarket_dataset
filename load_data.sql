@@ -55,3 +55,7 @@ select invoice_id, product_line, unit_price from staging
 insert into customers (invoice_id, gender, customer_type)
 select invoice_id, gender, customer_type from staging
 */
+
+-- -----------------------------------
+-- rename table to staging_backup
+/* rename table staging to staging_backup */
