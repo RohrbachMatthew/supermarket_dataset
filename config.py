@@ -3,5 +3,6 @@ config = {
     'host': 'localhost',
     'user': 'root',
     'password': 'Password1',
-    'database': 'super_market_db'
+    'database': 'super_market_db',
+    'port': '3307'
 }

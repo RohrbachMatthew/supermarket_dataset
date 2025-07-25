@@ -15,7 +15,16 @@ count(c.customer_type) as type_count
 from customers c
 join sales s on s.invoice_id = c.invoice_id
 group by c.gender, c.customer_type
-order by type_count desc
+order by customer_type
+*/
+
+-- compare customer type and total spent
+/*
+select c.customer_type, sum(s.total) as total
+from customers c
+join sales s on s.invoice_id = c.invoice_id
+group by c.customer_type
+order by total
 */
 
 -- count of males vs females
@@ -75,4 +84,8 @@ join sales s on s.invoice_id = p.invoice_id
 order by p.unit_price desc
 limit 5
 */
+
+select s.*, c.gender, c.customer_type from sales s 
+join customers c on s.invoice_id = c.invoice_id
+
 
