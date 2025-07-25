@@ -8,7 +8,7 @@ df = pd.read_csv("insert path")
 conn = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='*******',
+    password='Password1',
     database='super_market_db',
     port='3307'
 )
