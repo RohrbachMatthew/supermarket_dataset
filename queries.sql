@@ -107,3 +107,11 @@ join products p on s.invoice_id = p.invoice_id
 order by cost_of_goods desc
 limit 5
 */
+
+-- Example of how system will query for invoice ID
+/*
+select c.customer_type, s.total, s.quantity, s.date, s.payment
+from customers c
+join sales s on s.invoice_id = c.invoice_id
+where c.invoice_id = '137-63-5492'
+*/
