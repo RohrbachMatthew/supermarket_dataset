@@ -3,19 +3,6 @@ host: localhost
 user: root
 port: 3307
 
-It includes 1,000 rows and 17 columns with fields like:
-- Invoice ID, Branch, City, Customer Type, Gender
-- Product Line, Unit Price, Quantity, Tax, Total
-- Date, Time, Payment Method, COGS, Gross Income, Rating
-🧱 Suggested Table Breakdown for Multi-Table Practice
-You can normalize it into separate tables like:
-- Customers: customer type, gender
-- Products: product line, unit price
-- Sales: invoice ID, quantity, tax, total, date/time, payment
-- Stores: branch, city
-This lets you practice joins, foreign keys, and efficient querying
-
-
 tables:
 customers
    - invoice_id VARCHAR(10) (foreign)
@@ -45,3 +32,85 @@ sales
    - gross_margin_percentage FLOAT
    - gross income DECIMAL(8,2)
    - rating DECIMAL (3,1)
+
+NOTES:
+created tables in MySQL workbench, Then created staging table. I loaded the csv to MySQL with python. I then loaded from the staging table to the main tables. Then i turned staging table into staging back up incase it was ever needed again.
+I then went into MySQL workbench and made queries findings are below to be graphed with python.
+
+
+findings:
+- total gross income
+sum(gross_income)
+'15380.05'
+
+- compared male to female, females spent more on products
+'Male', '155084.17', '7385.29'
+'Female', '167883.26', '7994.76'
+
+- more female members than male members, and more male normal customers than female
+ gender, customer_type, type_count
+'Female', 'Member', '261'
+'Male', 'Normal', '259'
+'Male', 'Member', '240'
+'Female', 'Normal', '240'
+
+- there are 2 more males than female customers not enough to make a big difference
+ gender, gender_count
+'Male', '499'
+'Female', '501'
+
+- These customers (invoice_id) ordered the most items
+ invoice_id, quantity
+'137-63-5492', '10'
+'139-20-0155', '10'
+'148-82-2527', '10'
+'149-61-1929', '10'
+'157-13-5295', '10'
+
+
+- electronic accessories and food and beverage are the top items sold
+ product_line, total_sold
+'Electronic accessories', '971'
+'Food and beverages', '952'
+'Sports and travel', '920'
+'Home and lifestyle', '911'
+'Fashion accessories', '902'
+'Health and beauty', '854'
+
+- branch A sells the most
+ branch, amount_sold
+'A', '1859'
+'C', '1831'
+'B', '1820'
+
+- Yangon sells the most out of cities
+ city, total_sales
+'Yangon', '1873400'
+'Mandalay', '1829320'
+'Naypyitaw', '1807280'
+
+- invoice ids show who is ordering the most expensive items
+ invoice_id, quantity, unit_price, product_line
+'148-41-7930', '7', '99.96', 'Health and beauty'
+'219-22-9386', '9', '99.96', 'Sports and travel'
+'641-62-7288', '6', '99.92', 'Home and lifestyle'
+'437-53-3084', '2', '99.89', 'Fashion accessories'
+'667-92-0055', '6', '99.83', 'Health and beauty'
+
+- Payment types counted. Ewallet is the most used followed by cash and credit card
+Ewallet	    |  345
+Cash	    |  344
+Credit card |  311
+
+
+- fashion accessories invoice ID 860-79-0874 is the most expensive to make at 993.00 followed by fashion accessories invoice id 687-47-8271. 
+product_line, invoice_id, cost_of_goods
+Fashion accessories, 860-79-0874, 993.00
+Fashion accessories, 687-47-8271, 989.80
+Food and beverages, 283-26-5248, 985.20
+Home and lifestyle, 751-41-9720, 975.00
+Home and lifestyle, 303-96-2227, 973.80
+
+
+
+

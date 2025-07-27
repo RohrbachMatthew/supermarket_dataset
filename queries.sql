@@ -85,7 +85,25 @@ order by p.unit_price desc
 limit 5
 */
 
+-- Show all sales information with gender and type from customers table
+/*
 select s.*, c.gender, c.customer_type from sales s 
 join customers c on s.invoice_id = c.invoice_id
+*/
 
 
+-- Total for each payment type
+/*
+select s.payment, count(s.payment) as payment_type_sum from sales s
+group by payment
+order by payment_type_sum desc
+*/
+
+-- Top 5 items that costs the most to make
+/*
+select p.product_line, s.invoice_id, s.cogs as cost_of_goods
+from sales s
+join products p on s.invoice_id = p.invoice_id
+order by cost_of_goods desc
+limit 5
+*/
