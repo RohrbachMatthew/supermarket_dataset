@@ -1,7 +1,6 @@
 import mysql.connector
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 from config import config
 
 conn = mysql.connector.connect(**config)
@@ -76,8 +75,81 @@ order by gross_income
     plt.xlabel("Product Line")
     plt.tight_layout()
     plt.savefig("avg_income_product_line")
+
+
+def items_sold_by_branch():
+    query = """
+    select st.branch, sum(s.quantity) as amount_sold
+from stores st
+join sales s on s.invoice_id = st.invoice_id
+group by st.branch
+order by amount_sold desc
+
+    """
+
+    df = pd.read_sql(query, conn)
+    df.plot(x='branch', y='amount_sold', kind="bar")
+    plt.title("Total Items Sold by Branch")
+    plt.ylabel("Items Sold")
+    plt.xlabel("Branch")
+    plt.tight_layout()
+    plt.savefig("items_sold_by_branch")
+
+def tot_sales_city():
+    query = """
+    select st.city, sum(s.quantity) as total_sales
+from stores st
+join sales s
+group by st.city
+            """
+    df = pd.read_sql(query, conn)
+    df.plot(x='city', y='total_sales', kind='bar', rot=0, legend=False)
+    plt.title("Total Sales Per City")
+    plt.ylabel("Sales (Millions)")
+    plt.savefig("tot_sales_city")
+
+
+def ratings_city():
+    query = """
+    select st.city, avg(s.rating) as rating
+from stores st
+join sales s using(invoice_id)
+group by city
+order by rating desc
+    """
+
+    df = pd.read_sql(query, conn)
+
+    df.plot(x='city', y='rating', kind="bar", rot=0, legend=False)
+    plt.title("AVG Rating Per City")
+    plt.ylabel("Rating")
+    plt.xlabel("City")
+    plt.tight_layout()
+    plt.savefig("ratings_city")
+
+def spending_per_hour():
+    query = """
+    select hour(time) as hour_block, avg(total) as avg_spending
+from sales
+group by hour_block
+order by hour_block
+    """
+
+    df = pd.read_sql(query, conn)
+
+    df.plot(x='hour_block', y='avg_spending', kind="line", rot=0, legend=False)
+    plt.title("AVG Spending Per Hour")
+    plt.ylabel("AVG Spending")
+    plt.xlabel("Hour")
+    plt.tight_layout()
+    plt.savefig("spending_per_hour_avg")
+
 # Remove hash to show and save plots
 # gender_analysis()
 # customer_type_total_spent()
 # top_product_lines_quantity()
-income_by_product_line()
+# income_by_product_line()
+# items_sold_by_branch()
+# tot_sales_city()
+# ratings_city()
+# spending_per_hour()

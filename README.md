@@ -100,6 +100,14 @@ This project explores customer behavior, product sales, and store performance us
   - 157-13-5295
 
 ## Regional and Store Trends
+<table>
+<tr>
+<td><img src="items_sold_by_branch.png" alt='total of items sold by branch' width='150'></td>
+<td><img src="tot_sales_city.png" alt='total sales by city' width='150'></td>
+<td><img src="ratings_city.png" alt='ratings avg per city' width='150'></td>
+</tr>
+</table>
+
 - Items sold by branch:
   - A: 1,859
   - C: 1,831
@@ -114,6 +122,12 @@ This project explores customer behavior, product sales, and store performance us
   - Mandalay: 6.82
 
 ## Time-Based Performance
+<table>
+<tr>
+<td><img src="spending_per_hour_avg.png" alt='avg spent per hour' width='150'></td>
+</tr>
+</table>
+
 - Average customer spending by hour:
   - 10: 311.10
   - 11: 337.53

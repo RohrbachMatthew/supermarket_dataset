@@ -139,11 +139,12 @@ group by customer_type
 */
 
 
--- Top rated invoices by city
+-- Top avg rated invoices by city
 /*
-select st.city, s.rating as rating
+select st.city, avg(s.rating) as rating
 from stores st
 join sales s using(invoice_id)
+group by city
 order by rating desc
 */
 
