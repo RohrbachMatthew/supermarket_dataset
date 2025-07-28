@@ -23,6 +23,11 @@ This project explores customer behavior, product sales, and store performance us
 - Performed SQL analysis and visualized results in Python
 
 ## Customer Demographics and Spending Behavior
+<table>
+<tr>
+<td><img src="Total_spent_gender.png" alt='spent by gender graph' width='200'></td><td><img src="total_spent_customer_type.png" width='200'></td>
+</tr>
+</table>
 - Gender distribution: 501 females, 499 males
 - Spending by gender:
   - Female: 167,883.26 total; 7,994.76 gross income
