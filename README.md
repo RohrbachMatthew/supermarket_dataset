@@ -22,6 +22,9 @@ This project explores customer behavior, product sales, and store performance us
 - Renamed staging table to backup
 - Performed SQL analysis and visualized results in Python
 
+## Financial Summary
+- Total gross income: 15,380.05
+
 ## Customer Demographics and Spending Behavior
 <table>
 <tr>
@@ -120,5 +123,3 @@ This project explores customer behavior, product sales, and store performance us
   - February: 97,219.58
   - March: 109,455.74
 
-## Financial Summary
-- Total gross income: 15,380.05
