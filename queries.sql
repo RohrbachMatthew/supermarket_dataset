@@ -128,6 +128,7 @@ join sales s on s.invoice_id = c.invoice_id
 where c.invoice_id = '137-63-5492'
 */
 
+-- NEW QUERIES ------------------
 
 -- Average spending by customer_type
 /*
