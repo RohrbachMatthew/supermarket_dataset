@@ -28,7 +28,8 @@ This project explores customer behavior, product sales, and store performance us
 ## Customer Demographics and Spending Behavior
 <table>
 <tr>
-<td><img src="Total_spent_gender.png" alt='spent by gender graph' width='200'></td><td><img src="total_spent_customer_type.png" width='200'></td>
+<td><img src="Total_spent_gender.png" alt='spent by gender graph' width='150'></td>
+<td><img src="total_spent_customer_type.png" width='150'></td>
 </tr>
 </table>  
 
@@ -50,6 +51,13 @@ This project explores customer behavior, product sales, and store performance us
   - Credit Card: 311
 
 ## Product Performance
+<table>
+<tr>
+<td><img src="top_products_by_quantity.png" alt='top products by quantity sold' width='150'></td>
+<td><img src="avg_income_product_line.png" width='150'></td>
+</tr>
+</table>
+
 - Top product lines by quantity sold:
   - Electronic Accessories: 971
   - Food & Beverages: 952

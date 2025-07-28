@@ -39,6 +39,45 @@ order by total
     df.plot(x='customer_type', y='total', kind='bar', rot=0, color='blue')
     plt.savefig('total_spent_customer_type.png')
 
+
+def top_product_lines_quantity():
+    query = """
+    select p.product_line, sum(s.quantity) as total_sold
+from products p
+join sales s on s.invoice_id = p.invoice_id
+group by p.product_line
+order by total_sold desc
+    """
+
+    df = pd.read_sql(query, conn)
+    df.plot(x='product_line', y='total_sold', kind="bar", rot=20)
+    plt.title("Top Product Lines by Quantity Sold")
+    plt.ylabel('Quantity Sold')
+    plt.xlabel('Product')
+    plt.tight_layout()
+    plt.savefig("top_products_by_quantity")
+
+
+def income_by_product_line():
+    query = """
+    select p.product_line, avg(s.gross_income) as gross_income
+from products p
+join sales s using(invoice_id)
+group by product_line
+order by gross_income
+
+    """
+
+    df = pd.read_sql(query, conn)
+    print(df)
+    df.plot(x='product_line', y='gross_income', kind="bar", rot=20)
+    plt.title("AVG Gross Income by Product Line")
+    plt.ylabel("Income Amount AVG")
+    plt.xlabel("Product Line")
+    plt.tight_layout()
+    plt.savefig("avg_income_product_line")
 # Remove hash to show and save plots
 # gender_analysis()
 # customer_type_total_spent()
+# top_product_lines_quantity()
+income_by_product_line()
