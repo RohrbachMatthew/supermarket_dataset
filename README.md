@@ -125,6 +125,7 @@ This project explores customer behavior, product sales, and store performance us
 <table>
 <tr>
 <td><img src="spending_per_hour_avg.png" alt='avg spent per hour' width='150'></td>
+<td><img src="monthly_sales.png" alt='sales over months 1-3' width='150'></td>
 </tr>
 </table>
 

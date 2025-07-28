@@ -144,6 +144,22 @@ order by hour_block
     plt.tight_layout()
     plt.savefig("spending_per_hour_avg")
 
+def monthly_sales():
+    query = """
+    select month(date) as month, sum(total) as monthly_sales
+from sales
+group by month
+order by month
+    """
+
+    df = pd.read_sql(query, conn)
+
+    df.plot(x='month', y='monthly_sales', kind='line', legend=False)
+    plt.title("Monthly Sales (Jan. Feb. March)")
+    plt.ylabel("Sales")
+    plt.xlabel("Month")
+    plt.tight_layout()
+    plt.savefig("monthly_sales")
 # Remove hash to show and save plots
 # gender_analysis()
 # customer_type_total_spent()
@@ -153,3 +169,4 @@ order by hour_block
 # tot_sales_city()
 # ratings_city()
 # spending_per_hour()
+monthly_sales()
